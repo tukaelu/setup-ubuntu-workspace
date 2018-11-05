@@ -1,0 +1,21 @@
+---
+
+- name: install anyenv
+  git:
+    repo: https://github.com/riywo/anyenv
+    dest: ~/.anyenv
+
+- name: create envs directory
+  file:
+    path: ~/.anyenv/envs
+    state: directory
+
+- name: install anyenv plugins
+  git:
+    repo: "{{ item.repo }}"
+    dest: "~/.anyenv/plugins/{{ item.name }}"
+  with_items: '{{ anyenv_plugins }}'
+
+- name: install *envs
+  shell: ~/.anyenv/bin/anyenv install -f {{ item }} && exec $SHELL -l creates=~/.anyenv/envs/{{ item }}
+  with_items: '{{ anyenv_languages }}'

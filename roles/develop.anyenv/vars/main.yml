@@ -1,0 +1,14 @@
+---
+
+anyenv_plugins:
+  - name: anyenv-update
+    repo: https://github.com/znz/anyenv-update.git
+  - name: anyenv-git
+    repo: https://github.com/znz/anyenv-git.git
+
+anyenv_languages:
+  - phpenv
+  - ndenv
+  - pyenv
+  - rbenv
+  - goenv

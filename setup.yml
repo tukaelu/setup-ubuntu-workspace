@@ -12,3 +12,4 @@
     ci_skip: "{{ lookup('env', 'CI_SKIP') }}"
   roles:
     - base.linuxbrew
+    - develop.anyenv
