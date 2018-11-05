@@ -1,0 +1,25 @@
+---
+
+- name: Homebrew taps
+  homebrew_tap: tap={{ item }} state=present
+  with_items: '{{ taps }}'
+
+- name: update homebrew
+  homebrew: update_homebrew=yes
+
+- name: install packages from linuxbrew
+  homebrew:
+    name={{ item.name }}
+    state={{ item.state | default('latest') }}
+    install_options={{
+      item.install_options | default() | join(',')
+      if item.install_options is not string
+      else item.install_options
+    }}
+  with_items: '{{ linuxbrew_packages }}'
+  notify: brew doctor
+
+- name: clean up cache files
+  shell: brew cleanup
+  register: brew_cleanup_result
+  changed_when: "brew_cleanup_result.stdout != ''"

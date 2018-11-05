@@ -1,0 +1,14 @@
+---
+
+- hosts: localhost
+  connection: local
+  environment:
+    PATH: "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  vars:
+    user_name: Tsukasa Nishiyama
+    user_email: tsukasa@birdcage.jp
+    github_user: tukaelu
+    timezone: Asia/Tokyo
+    ci_skip: "{{ lookup('env', 'CI_SKIP') }}"
+  roles:
+    - base.linuxbrew

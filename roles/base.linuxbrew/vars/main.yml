@@ -1,0 +1,25 @@
+---
+
+taps:
+  - neovim/neovim
+  - mackerelio/mackerel-agent
+
+linuxbrew_packages:
+  - { name: curl }
+  - { name: git }
+  - { name: readline }
+  - { name: openssl }
+  - { name: zsh }
+  - { name: fzf }
+  - { name: jq }
+  - { name: nkf }
+  - { name: nmap }
+  - { name: mtr }
+  - { name: tree }
+  - { name: neovim }
+  - { name: wget }
+  - { name: httpie }
+  - { name: yarn }
+  - { name: kubectl }
+    # mackerel
+  - { name: mkr }
