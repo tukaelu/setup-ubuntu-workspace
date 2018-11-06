@@ -26,4 +26,5 @@ brew install ansible
 
 ```
 git clone git@github.com:tukaelu/setup-ubuntu-workspace.git && cd setup-ubuntu-workspace
+ansible-playbook setup.yml -vv -i hosts
 ```
