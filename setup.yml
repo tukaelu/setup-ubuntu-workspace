@@ -3,13 +3,20 @@
 - hosts: localhost
   connection: local
   environment:
-    PATH: "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    PATH: "/home/tuka/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
   vars:
+    user: tuka
     user_name: Tsukasa Nishiyama
     user_email: tsukasa@birdcage.jp
     github_user: tukaelu
     timezone: Asia/Tokyo
     ci_skip: "{{ lookup('env', 'CI_SKIP') }}"
   roles:
-    - base.linuxbrew
-    - develop.anyenv
+    - base
+    - thinkpad
+    - python
+    - zsh
+    - fzf
+    - anyenv
+    - software
+    - neovim

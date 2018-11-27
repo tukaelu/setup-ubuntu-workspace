@@ -1,0 +1,9 @@
+---
+
+- name: install neovim
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: neovim

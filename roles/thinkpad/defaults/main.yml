@@ -1,0 +1,17 @@
+
+tlp_packages:
+  - name: tlp
+  - name: tlp-rdw
+  - name: tp-smapi-dkms
+  - name: acpi-call-dkms
+
+throttling_fix_packages:
+  - name: virtualenv
+  - name: python3-dev
+  - name: python3-venv
+  - name: libdbus-glib-1-dev
+  - name: libgirepository1.0-dev
+  - name: libcairo2-dev
+
+ext_packages:
+  - name: powertop

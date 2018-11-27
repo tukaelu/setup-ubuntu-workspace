@@ -1,0 +1,11 @@
+---
+
+- name: install zlug
+  command: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  args:
+    creates: /home/tuka/.zplug
+
+- name: copy .zplug.zsh
+  template:
+    src: zplug.zsh.j2
+    dest: /home/tuka/.zplug.zsh

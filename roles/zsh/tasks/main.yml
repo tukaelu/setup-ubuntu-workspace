@@ -1,0 +1,23 @@
+---
+
+- name: install zsh
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: zsh
+
+- name: chsh
+  user:
+    name: '{{ item.name }}'
+    shell: '{{ item.shell }}'
+  with_items:
+    - { name: tuka, shell: '/usr/bin/zsh' }
+
+- name: copy .zshrc
+  template:
+    src: zshrc.j2
+    dest: /home/tuka/.zshrc
+
+- import_tasks: zplug.yml

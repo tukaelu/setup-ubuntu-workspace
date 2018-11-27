@@ -1,0 +1,21 @@
+---
+
+- name: install base packages
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: curl
+    - name: openssl
+    - name: jq
+    - name: nkf
+    - name: nmap
+    - name: mtr
+    - name: tree
+    - name: neovim
+    - name: wget
+    - name: httpie
+    - name: yarn
+
+# - import_tasks: git.yml

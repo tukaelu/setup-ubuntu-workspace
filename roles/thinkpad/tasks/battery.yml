@@ -1,0 +1,16 @@
+---
+
+# Disable “Secure Boot” in BIOS
+- name: install packages for battery management
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - '{{ tlp_packages }}'
+    - '{{ ext_packages }}'
+
+# Start TLP
+- name: tlp start
+  become: yes
+  command: tlp start

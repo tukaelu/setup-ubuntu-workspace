@@ -1,0 +1,14 @@
+---
+
+- name: install git
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: git
+
+- name: copy .gitconfig
+  template:
+    src: git/gitconfig.j2
+    dest: /home/tuka/.gitconfig

@@ -1,0 +1,36 @@
+---
+# Fix Intel CPU Throttling
+# see
+#  - https://mensfeld.pl/2018/05/lenovo-thinkpad-x1-carbon-6th-gen-2018-ubuntu-18-04-tweaks/
+#  - https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5
+
+- name: install packages for throttling management
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - '{{ throttling_fix_packages }}'
+
+- name: clone lenovo-throttling-fix repo
+  git:
+    repo: https://github.com/erpalma/lenovo-throttling-fix.git
+    dest: /home/tuka/Repos/erpalma/lenovo-throttling-fix
+
+- name: install lenovo-throttling-fix
+  command: ./install.sh
+  args:
+    chdir: /home/tuka/Repos/erpalma/lenovo-throttling-fix
+    creates: /etc/lenovo_fix.conf
+
+- name: stop thermald
+  become: yes
+  command: systemctl stop thermald.service
+
+- name: disable thermald
+  become: yes
+  command: systemctl disable thermald.service
+
+- name: mask thermald
+  become: yes
+  command: systemctl mask thermald.service

@@ -1,0 +1,17 @@
+---
+
+- name: install software with package manager
+  become: yes
+  when: ansible_pkg_mgr == "apt"
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+    update_cache: yes
+  with_items:
+    - '{{ basic_software }}'
+
+- name: copy files
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+  with_items: '{{ copy_files }}'

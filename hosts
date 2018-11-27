@@ -1,4 +1,2 @@
 [localhost]
 localhost
-[localhost:vars]
-ansible_python_interpreter=/home/linuxbrew/.linuxbrew/bin/python

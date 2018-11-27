@@ -1,0 +1,8 @@
+---
+
+# Battery
+- import_tasks: battery.yml
+- import_tasks: throttling.yml
+
+# Thinkpad setting
+- import_tasks: settings.yml

@@ -1,0 +1,8 @@
+
+basic_software:
+  - name: google-chrome-stable
+  - name: synapse
+  - name: hyper
+
+copy_files:
+  - { src: .hyper.js.j2, dest: ~/.hyper.js }
