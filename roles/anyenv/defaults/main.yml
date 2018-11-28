@@ -12,3 +12,19 @@ anyenv_languages:
   - pyenv
   - rbenv
   - goenv
+
+libralies:
+  - name: autoconf
+  - name: automake
+  - name: zlib1g-dev
+  - name: re2c
+  - name: lixml2-dev
+  - name: libssl-dev
+  - name: libcurl4-openssl-dev
+  - name: libbz2-dev
+  - name: libjpeg-dev
+  - name: libpng-dev
+  - name: libreadline6-dev
+  - name: libtidy-dev
+  - name: libxslt1-dev
+  - name: libx11-dev

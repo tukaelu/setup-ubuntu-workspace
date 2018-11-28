@@ -1,5 +1,12 @@
 ---
 
+- name: install needs libraries
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items: '{{ libraries }}'
+
 - name: install anyenv
   git:
     repo: https://github.com/riywo/anyenv
