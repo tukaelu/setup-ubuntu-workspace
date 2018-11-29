@@ -1,0 +1,14 @@
+---
+
+- name: install conky-all
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: conky-all
+
+- name: copy conkyrc
+  template:
+    src: conkyrc.j2
+    dest: /home/tuka/.conkyrc
