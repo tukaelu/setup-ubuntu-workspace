@@ -7,3 +7,15 @@
     state: '{{ item.state | default("present") }}'
   with_items:
     - name: neovim
+
+- name: install python support
+  pip:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: neovim
+
+- name: copy init.vim
+  template:
+    src: init.vim.j2
+    dest: /home/tuka/.config/nvim/init.vim
