@@ -1,0 +1,33 @@
+---
+
+- name: install packages
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - name: apt-transport-https
+    - name: ca-certificates
+    - name: curl
+    - name: software-properties-common
+
+- name: add docker's official GPG key
+  become: yes
+  command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+- name: 
+  become: yes
+  command: add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    bionic \
+    stable"
+
+- name: install packages
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+    update_cache: yes
+  with_items:
+    - name: docker-ce
+
