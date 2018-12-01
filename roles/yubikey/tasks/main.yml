@@ -1,0 +1,9 @@
+---
+
+- name: set up u2f
+  become: yes
+  get_url:
+    url: https://github.com/Yubico/libu2f-host/blob/master/70-u2f.rules
+    dest: /etc/udev/rules.d/70-u2f.rules
+  args:
+    creates: /etc/udev/rules.d/70-u2f.rules
