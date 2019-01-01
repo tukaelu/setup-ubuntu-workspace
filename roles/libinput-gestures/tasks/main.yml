@@ -1,0 +1,37 @@
+---
+
+- name: install dependencies
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+    update_cache: yes
+  with_items:
+    - name: xdotool
+    - name: wmctrl
+    - name: libinput-tools
+
+- name: clone repossitory
+  become: yes
+  git:
+    repo: http://github.com/bulletmark/libinput-gestures
+    dest: /home/tuka/Repo/misc/libinput-gestures
+    depth: 1
+
+- name: install
+  become: yes
+  command: ./libinput-gestures-setup install
+  args:
+    chdir: /home/tuka/Repo/misc/libinput-gestures
+
+- name: copy file
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+  with_items:
+    - { src: libinput-gestures.conf.j2, dest: /home/tuka/.config/libinput-gestures.conf }
+
+- name: restart process
+  command: ./libinput-gestures-setup restart
+  args:
+    chdir: /home/tuka/Repo/misc/libinput-gestures
