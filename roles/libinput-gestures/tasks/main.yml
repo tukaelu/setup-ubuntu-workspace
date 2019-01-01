@@ -15,14 +15,14 @@
   become: yes
   git:
     repo: http://github.com/bulletmark/libinput-gestures
-    dest: /home/tuka/Repo/misc/libinput-gestures
+    dest: /home/tuka/Repos/misc/libinput-gestures
     depth: 1
 
 - name: install
   become: yes
   command: ./libinput-gestures-setup install
   args:
-    chdir: /home/tuka/Repo/misc/libinput-gestures
+    chdir: /home/tuka/Repos/misc/libinput-gestures
 
 - name: copy file
   template:
@@ -34,4 +34,4 @@
 - name: restart process
   command: ./libinput-gestures-setup restart
   args:
-    chdir: /home/tuka/Repo/misc/libinput-gestures
+    chdir: /home/tuka/Repos/misc/libinput-gestures
