@@ -1,0 +1,21 @@
+---
+
+- name: add repository key
+  become: yes
+  command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+- name: add source list
+  become: yes
+  command: echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+
+- name: install kubectl
+  become: yes
+  apt:
+    name: kubectl
+    update_cache: yes
+
+- name: install kubeadm
+  become: yes
+  apt:
+    name: kubeadm
+    update_cache: yes
