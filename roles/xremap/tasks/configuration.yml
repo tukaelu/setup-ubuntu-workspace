@@ -1,0 +1,18 @@
+---
+
+- name: copy file
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+  with_items:
+    - { src: config.j2, dest: /home/tuka/.config/xremap/config }
+    - { src: xremap.service.j2, dest: /home/tuka/.config/systemd/user/xremap.service }
+
+- name: deamon reload
+  command: systemctl --user daemon-reload
+
+- name: restart
+  command: systemctl --user restart xremap
+
+- name: enable
+  command: systemctl --user enable xremap
