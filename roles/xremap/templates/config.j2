@@ -8,12 +8,15 @@ window class_only: ['google-chrome', 'slack'] do
   remap 'C-a', to: 'Home'
   remap 'C-e', to: 'End'
 
-  remap 'M-b', to: 'Ctrl-Left'
-  remap 'M-f', to: 'Ctrl-Right'
+  remap 'Alt-b', to: 'Ctrl-Left'
+  remap 'Alt-f', to: 'Ctrl-Right'
 
   remap 'C-k', to: ['Shift-End', 'Ctrl-x']
   remap 'C-d', to: 'Delete'
-  remap 'M-d', to: 'Ctrl-Delete'
+  remap 'C-h', to: 'BackSpace'
+  remap 'Alt-d', to: 'Ctrl-Delete'
+  remap 'Alt-w', to: 'Ctrl-w'
+  remap 'Alt-t', to: 'Ctrl-t'
 
   %w[f l].each do |key|
     remap "Alt-#{key}", to: "C-#{key}"
@@ -29,16 +32,23 @@ window class_only: 'code' do
   remap 'C-a', to: 'Home'
   remap 'C-e', to: 'End'
 
-  remap 'M-b', to: 'Ctrl-Left'
-  remap 'M-f', to: 'Ctrl-Right'
+  remap 'Alt-b', to: 'Ctrl-Left'
+  remap 'Alt-f', to: 'Ctrl-Right'
 
   remap 'C-d', to: 'Delete'
   remap 'C-h', to: 'BackSpace'
 
+  remap 'Alt-a', to: 'Ctrl-a'
+  remap 'Alt-c', to: 'Ctrl-c'
+  remap 'Alt-v', to: 'Ctrl-v'
   remap 'Alt-f', to: 'Ctrl-h'
   remap 'Alt-o', to: 'Ctrl-o'
   remap 'Alt-p', to: 'Ctrl-p'
   remap 'Alt-s', to: 'Ctrl-s'
+  remap 'Alt-w', to: 'Ctrl-w'
+  remap 'Alt-t', to: 'Ctrl-t'
+
+  remap 'Alt-Shift-p', to: 'Ctrl-Shift-p'
 end
 
 window class_only: 'hyper' do
