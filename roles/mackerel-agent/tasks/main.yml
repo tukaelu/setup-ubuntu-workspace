@@ -5,12 +5,13 @@
 
 - name: install original plugins
   copy:
-    src: ../files/'{{ item }}'
-    dest: /home/tuka/.mackerel/bin/'{{ item }}'
+    src: ../files/{{ item }}
+    dest: /home/tuka/.mackerel/bin/{{ item }}
     mode: 0755
   with_items:
     - x1-carbon-battery-capacity.sh
     - x1-carbon-battery-energy.sh
+    - x1-carbon-cpu-temp.sh
 
 - name: configuration
   become: yes

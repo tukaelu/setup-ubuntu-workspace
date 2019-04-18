@@ -8,5 +8,6 @@
     mackerel_plugins:
       battery_capacity: "/home/tuka/.mackerel/bin/x1-carbon-battery-capacity.sh"
       battery_energy: "/home/tuka/.mackerel/bin/x1-carbon-battery-energy.sh"
+      cpu_temperature: "/home/tuka/.mackerel/bin/x1-carbon-cpu-temp.sh"
   roles:
     - mackerel-agent
