@@ -1,0 +1,24 @@
+---
+
+- name: install mackerel-agent
+  shell: wget -q -O - https://mackerel.io/file/script/setup-all-apt-v2.sh | MACKEREL_APIKEY='{{ mackerel_agent_apikey }}' sh
+
+- name: install original plugins
+  copy:
+    src: ../files/'{{ item }}'
+    dest: /home/tuka/.mackerel/bin/'{{ item }}'
+    mode: 0755
+  with_items:
+    - x1-carbon-battery-capacity.sh
+    - x1-carbon-battery-energy.sh
+
+- name: configuration
+  become: yes
+  template:
+    src: mackerel-agent.conf.j2
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+
+- name: restart mackerel-agent
+  service:
+    name: mackerel-agent
+    state: restarted

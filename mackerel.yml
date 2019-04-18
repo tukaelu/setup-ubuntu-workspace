@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  environment:
+    PATH: "/home/tuka/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+  vars:
+    mackerel_agent_apikey: 6HMKJpMFWPtmgY51MRvpuUkog9FZQyg7C3dPxVEsbckp
+    mackerel_plugins:
+      battery_capacity: "/home/tuka/.mackerel/bin/x1-carbon-battery-capacity.sh"
+      battery_energy: "/home/tuka/.mackerel/bin/x1-carbon-battery-energy.sh"
+  roles:
+    - mackerel-agent

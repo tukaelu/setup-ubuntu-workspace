@@ -1,0 +1,13 @@
+apikey = "{{ mackerel_agent_apikey }}"
+
+[host_status]
+on_start = "working"
+on_stop  = "poweroff"
+
+{% if mackerel_plugins is defined %}
+{% for key, command in mackerel_plugins.items() %}
+[plugin.metrics.{{ key }}]
+command = "{{ command }}"
+
+{% endfor %}
+{% endif %}
