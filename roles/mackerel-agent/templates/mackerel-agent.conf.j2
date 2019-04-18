@@ -11,3 +11,13 @@ command = "{{ command }}"
 
 {% endfor %}
 {% endif %}
+
+{% if mackerel_check_plugins is defined %}
+{% for key, options in mackerel_check_plugins.items() %}
+[plugin.checks.{{ key }}]
+{% for optKey, value in options.items() %}
+{{ optKey }} = "{{ value }}"
+{% endfor %}
+
+{% endfor %}
+{% endif %}

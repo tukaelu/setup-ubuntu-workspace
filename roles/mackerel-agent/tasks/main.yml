@@ -3,6 +3,14 @@
 - name: install mackerel-agent
   shell: wget -q -O - https://mackerel.io/file/script/setup-all-apt-v2.sh | MACKEREL_APIKEY='{{ mackerel_agent_apikey }}' sh
 
+- name: install mackerel-plugins
+  become: yes
+  apt:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items:
+    - { name: mackerel-check-plugins, state: present }
+
 - name: install original plugins
   copy:
     src: ../files/{{ item }}

@@ -9,5 +9,9 @@
       battery_capacity: "/home/tuka/.mackerel/bin/x1-carbon-battery-capacity.sh"
       battery_energy: "/home/tuka/.mackerel/bin/x1-carbon-battery-energy.sh"
       cpu_temperature: "/home/tuka/.mackerel/bin/x1-carbon-cpu-temp.sh"
+    mackerel_check_plugins:
+      uptime:
+        command: "check-uptime -W 1209600 -C 1728000"
+        memo: "14日間連続稼働でWarning、20日間連続稼働でCritical"
   roles:
     - mackerel-agent
