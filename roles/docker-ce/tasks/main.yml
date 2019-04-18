@@ -25,11 +25,11 @@
 - name: install packages
   become: yes
   apt:
-    name: '{{ item.name }}'
+    name: '{{ item.name }}={{ item.version | default("*")}}'
     state: '{{ item.state | default("present") }}'
     update_cache: yes
   with_items:
-    - name: docker-ce
+    - { name: docker-ce, version: 18.06 }
 
 - name : install docker-compose
   become: yes
